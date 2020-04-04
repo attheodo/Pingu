@@ -45,6 +45,7 @@ class Pingu {
         configureMenu()
         
         statusItem.button?.addSubview(chartView)
+        statusItem.length = chartView.desiredWidth
         
         eventMonitor = EventMonitor(mask: .leftMouseDown) { [weak self] event in
 
