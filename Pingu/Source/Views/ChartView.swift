@@ -85,11 +85,16 @@ class ChartView: NSView {
     public func setPausedState(_ paused: Bool) {
         
         if paused {
-        
-            label.stringValue = "n/a"
-            resetBarViews()
-            
+            reset()
         }
+        
+    }
+    
+    public func reset() {
+        
+        label.stringValue = "n/a"
+        results = Array(repeating: .responseInMilliseconds(0), count: 6)
+        resetBarViews()
         
     }
     
