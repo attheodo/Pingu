@@ -78,6 +78,59 @@ public class PingService {
         
     }
     
+    public func getAddress(forHost host: String) -> (data: Data?, error: NSError?) {
+        
+        var streamError = CFStreamError()
+        let cfhost = CFHostCreateWithName(nil, host as CFString).takeRetainedValue()
+        let status = CFHostStartInfoResolution(cfhost, .addresses, &streamError)
+        
+        var data: Data?
+        
+        if !status {
+            
+            if Int32(streamError.domain)  == kCFStreamErrorDomainNetDB {
+                return (nil, NSError(domain: kCFErrorDomainCFNetwork as String,
+                                     code: Int(CFNetworkErrors.cfHostErrorUnknown.rawValue),
+                                     userInfo: nil))
+            } else {
+                return (nil, NSError(domain: kCFErrorDomainCFNetwork as String,
+                                     code: Int(CFNetworkErrors.cfHostErrorUnknown.rawValue),
+                                     userInfo: nil))
+            }
+            
+        } else {
+            
+            var success: DarwinBoolean = false
+            
+            guard let addresses = CFHostGetAddressing(cfhost, &success)?.takeUnretainedValue() as? [Data] else {
+                return (nil, NSError(domain: kCFErrorDomainCFNetwork as String,
+                                     code: Int(CFNetworkErrors.cfHostErrorHostNotFound.rawValue) ,
+                                     userInfo: nil))
+            }
+            
+            for address in addresses {
+                
+                let addrin = address.socketAddress
+                
+                if address.count >= MemoryLayout<sockaddr>.size && addrin.sa_family == UInt8(AF_INET) {
+                    data = address
+                    break
+                }
+                
+            }
+            
+            if data?.count == 0 || data == nil {
+                return (nil, NSError(domain: kCFErrorDomainCFNetwork as String,
+                                     code: Int(CFNetworkErrors.cfHostErrorHostNotFound.rawValue) ,
+                                     userInfo: nil))
+            }
+            
+        }
+        
+        return (data, nil)
+        
+    }
+    
     // MARK: - Private Methods
     
     fileprivate func parse(line: String) -> PingResult {
