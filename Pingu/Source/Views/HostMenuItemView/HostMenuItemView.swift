@@ -50,8 +50,6 @@ class HostMenuItemView: NSView {
             
             effectView.state = .active
             effectView.material = .selection
-            effectView.isEmphasized = true
-            effectView.blendingMode = .behindWindow
             
         } else {
             
@@ -60,8 +58,6 @@ class HostMenuItemView: NSView {
             
             effectView.state = .inactive
             effectView.material = .windowBackground
-            effectView.isEmphasized = false
-            effectView.blendingMode = .behindWindow
             
         }
         
