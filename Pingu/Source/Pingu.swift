@@ -179,6 +179,7 @@ class Pingu {
         savedHosts.save(toStore: UserDefaults.standard)
         
         startPinging(host: item.host)
+        chartView.reset()
         configureMenu()
         
     }
