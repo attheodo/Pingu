@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PreferencesViewController" customModule="Pingu" customModuleProvider="target">
+            <connections>
+                <outlet property="addButton" destination="LHc-lu-aEe" id="C08-vQ-6Rd"/>
+                <outlet property="errorLabel" destination="5hx-kB-Uuk" id="lt1-J0-GPQ"/>
+                <outlet property="hostTextField" destination="PbS-lx-fMm" id="89e-8s-lDQ"/>
+                <outlet property="intervalPopupButton" destination="MY3-CC-o3f" id="ykR-BA-bnm"/>
+                <outlet property="view" destination="c22-O7-iKe" id="Pgx-Je-Vb0"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView misplaced="YES" id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="268" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ThG-nM-6EY">
+                    <rect key="frame" x="14" y="59" width="83" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Ping interval:" id="Hlx-HQ-VG7">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PbS-lx-fMm">
+                    <rect key="frame" x="100" y="85" width="159" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="hostname or IP..." bezelStyle="round" id="haM-m9-VII">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MY3-CC-o3f">
+                    <rect key="frame" x="98" y="53" width="164" height="25"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oLS-sx-LfM">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <menu key="menu" id="NDm-aF-qgX"/>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KK5-Ei-W0c">
+                    <rect key="frame" x="60" y="88" width="37" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Host:" id="Z7H-N8-zLi">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bv8-gU-KCD">
+                    <rect key="frame" x="100" y="8" width="159" height="39"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5hx-kB-Uuk">
+                            <rect key="frame" x="63" y="25" width="33" height="14"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="ffq-w6-yDk">
+                                <font key="font" metaFont="controlContent" size="11"/>
+                                <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LHc-lu-aEe">
+                            <rect key="frame" x="-6" y="-7" width="171" height="32"/>
+                            <buttonCell key="cell" type="push" title="Add and start pinging" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zFx-eK-UKd">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="didTapDoneButton:" target="-2" id="NEQ-FC-dFg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="MY3-CC-o3f" firstAttribute="leading" secondItem="ThG-nM-6EY" secondAttribute="trailing" constant="5" id="2dP-51-hQT"/>
+                <constraint firstItem="PbS-lx-fMm" firstAttribute="leading" secondItem="KK5-Ei-W0c" secondAttribute="trailing" constant="5" id="8Jk-1e-VL7"/>
+                <constraint firstItem="MY3-CC-o3f" firstAttribute="top" secondItem="PbS-lx-fMm" secondAttribute="bottom" constant="8" id="Nar-9w-jtx"/>
+                <constraint firstItem="KK5-Ei-W0c" firstAttribute="centerY" secondItem="PbS-lx-fMm" secondAttribute="centerY" id="SBA-QG-qFP"/>
+                <constraint firstAttribute="trailing" secondItem="Bv8-gU-KCD" secondAttribute="trailing" constant="9" id="Urh-Ci-cIN"/>
+                <constraint firstItem="PbS-lx-fMm" firstAttribute="leading" secondItem="MY3-CC-o3f" secondAttribute="leading" id="Ye7-c1-XqR"/>
+                <constraint firstItem="MY3-CC-o3f" firstAttribute="trailing" secondItem="Bv8-gU-KCD" secondAttribute="trailing" id="aDl-3e-qG9"/>
+                <constraint firstItem="Bv8-gU-KCD" firstAttribute="top" secondItem="MY3-CC-o3f" secondAttribute="bottom" constant="9" id="hrU-sJ-6J4"/>
+                <constraint firstItem="MY3-CC-o3f" firstAttribute="leading" secondItem="Bv8-gU-KCD" secondAttribute="leading" id="kMp-0s-qBI"/>
+                <constraint firstItem="ThG-nM-6EY" firstAttribute="centerY" secondItem="MY3-CC-o3f" secondAttribute="centerY" id="rfc-xF-NKG"/>
+                <constraint firstAttribute="bottom" secondItem="Bv8-gU-KCD" secondAttribute="bottom" constant="8" id="tag-kT-ycM"/>
+                <constraint firstItem="PbS-lx-fMm" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="13" id="ykq-XW-Ybg"/>
+                <constraint firstItem="PbS-lx-fMm" firstAttribute="trailing" secondItem="MY3-CC-o3f" secondAttribute="trailing" id="znn-jA-Z2w"/>
+            </constraints>
+            <point key="canvasLocation" x="35" y="88"/>
+        </customView>
+    </objects>
+</document>
