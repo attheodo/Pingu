@@ -86,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				B1228920243630AF00FACD69 /* Source */,
-				B13AF1FB24365C1E0054E1E5 /* Extensions */,
 				B1228921243630BE00FACD69 /* Resources */,
 				B1228922243630D300FACD69 /* Supporting Files */,
 			);
@@ -98,6 +97,7 @@
 			children = (
 				B1228912243630A300FACD69 /* AppDelegate.swift */,
 				B12289232436343100FACD69 /* Pingu.swift */,
+				B13AF1FB24365C1E0054E1E5 /* Extensions */,
 				B1477DF82438BFD1005BC84B /* Views */,
 				B15C172B2437638300F08119 /* Misc */,
 				B1758959243668E00050C05E /* Models */,
