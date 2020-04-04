@@ -21,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="209" height="47"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="zox-0W-c99">
+                <visualEffectView blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="zox-0W-c99">
                     <rect key="frame" x="0.0" y="0.0" width="209" height="47"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Me-zF-POb">
