@@ -123,7 +123,7 @@ class Pingu {
     fileprivate func showPreferencesPopover() {
         
         preferencesPopover = NSPopover()
-        preferencesPopover?.contentViewController = PreferencesViewController(delegate: self)
+        preferencesPopover?.contentViewController = PreferencesViewController(pingService: pingService, delegate: self)
         
         if let button = statusItem.button {
             preferencesPopover?.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
