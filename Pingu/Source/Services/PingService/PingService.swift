@@ -40,6 +40,8 @@ public class PingService {
         isPinging = true
         
         DispatchQueue.global(qos: .userInteractive).async {
+        
+            NSLog("Starting pings - Host: \(host) - Interval: \(interval)")
             
             self.task = Process()
             self.task?.launchPath = self.pingPath
@@ -63,6 +65,8 @@ public class PingService {
     }
     
     public func stopPinging() {
+        
+        NSLog("Stopping pings")
         
         isPinging = false
         outputHandle?.closeFile()
