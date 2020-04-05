@@ -27,7 +27,28 @@
 		B175895B243668ED0050C05E /* PingInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B175895A243668ED0050C05E /* PingInterval.swift */; };
 		B175896024374BA30050C05E /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = B175895F24374BA30050C05E /* Host.swift */; };
 		B1758962243750940050C05E /* SavedHosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1758961243750940050C05E /* SavedHosts.swift */; };
+		B1CD487F243A038000AED012 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD487E243A038000AED012 /* Shared.swift */; };
+		B1CD4880243A038000AED012 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD487E243A038000AED012 /* Shared.swift */; };
+		B1E5A2DC2439FE3300514EB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5A2DB2439FE3300514EB3 /* AppDelegate.swift */; };
+		B1E5A2DE2439FE3400514EB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1E5A2DD2439FE3400514EB3 /* Assets.xcassets */; };
+		B1E5A2E12439FE3400514EB3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1E5A2DF2439FE3400514EB3 /* MainMenu.xib */; };
+		B1E5A2E82439FEF000514EB3 /* PinguLauncher.app in Copy launch helper */ = {isa = PBXBuildFile; fileRef = B1E5A2D92439FE3300514EB3 /* PinguLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B1E5A2EB2439FF2500514EB3 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1E5A2EA2439FF2500514EB3 /* ServiceManagement.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B1E5A2E72439FECB00514EB3 /* Copy launch helper */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				B1E5A2E82439FEF000514EB3 /* PinguLauncher.app in Copy launch helper */,
+			);
+			name = "Copy launch helper";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B122890F243630A300FACD69 /* Pingu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pingu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +73,14 @@
 		B175895A243668ED0050C05E /* PingInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingInterval.swift; sourceTree = "<group>"; };
 		B175895F24374BA30050C05E /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		B1758961243750940050C05E /* SavedHosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedHosts.swift; sourceTree = "<group>"; };
+		B1CD487E243A038000AED012 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		B1E5A2D92439FE3300514EB3 /* PinguLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinguLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1E5A2DB2439FE3300514EB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B1E5A2DD2439FE3400514EB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1E5A2E02439FE3400514EB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		B1E5A2E22439FE3400514EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1E5A2E32439FE3400514EB3 /* PinguLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PinguLauncher.entitlements; sourceTree = "<group>"; };
+		B1E5A2EA2439FF2500514EB3 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +89,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B15C1732243784AF00F08119 /* SnapKit in Frameworks */,
+				B1E5A2EB2439FF2500514EB3 /* ServiceManagement.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1E5A2D62439FE3300514EB3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				B1228911243630A300FACD69 /* Pingu */,
+				B1E5A2DA2439FE3300514EB3 /* PinguLauncher */,
 				B1228910243630A300FACD69 /* Products */,
+				B1E5A2E92439FF2500514EB3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				B122890F243630A300FACD69 /* Pingu.app */,
+				B1E5A2D92439FE3300514EB3 /* PinguLauncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +137,7 @@
 			children = (
 				B1228912243630A300FACD69 /* AppDelegate.swift */,
 				B12289232436343100FACD69 /* Pingu.swift */,
+				B1CD487D243A036B00AED012 /* Shared */,
 				B13AF1FB24365C1E0054E1E5 /* Extensions */,
 				B1477DF82438BFD1005BC84B /* Views */,
 				B15C172B2437638300F08119 /* Misc */,
@@ -198,6 +239,34 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		B1CD487D243A036B00AED012 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B1CD487E243A038000AED012 /* Shared.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B1E5A2DA2439FE3300514EB3 /* PinguLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				B1E5A2DB2439FE3300514EB3 /* AppDelegate.swift */,
+				B1E5A2DD2439FE3400514EB3 /* Assets.xcassets */,
+				B1E5A2DF2439FE3400514EB3 /* MainMenu.xib */,
+				B1E5A2E22439FE3400514EB3 /* Info.plist */,
+				B1E5A2E32439FE3400514EB3 /* PinguLauncher.entitlements */,
+			);
+			path = PinguLauncher;
+			sourceTree = "<group>";
+		};
+		B1E5A2E92439FF2500514EB3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1E5A2EA2439FF2500514EB3 /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,6 +277,7 @@
 				B122890B243630A300FACD69 /* Sources */,
 				B122890C243630A300FACD69 /* Frameworks */,
 				B122890D243630A300FACD69 /* Resources */,
+				B1E5A2E72439FECB00514EB3 /* Copy launch helper */,
 			);
 			buildRules = (
 			);
@@ -221,6 +291,23 @@
 			productReference = B122890F243630A300FACD69 /* Pingu.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B1E5A2D82439FE3300514EB3 /* PinguLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1E5A2E42439FE3400514EB3 /* Build configuration list for PBXNativeTarget "PinguLauncher" */;
+			buildPhases = (
+				B1E5A2D52439FE3300514EB3 /* Sources */,
+				B1E5A2D62439FE3300514EB3 /* Frameworks */,
+				B1E5A2D72439FE3300514EB3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PinguLauncher;
+			productName = PinguLauncher;
+			productReference = B1E5A2D92439FE3300514EB3 /* PinguLauncher.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -232,6 +319,9 @@
 				ORGANIZATIONNAME = "Thanos Theodoridis";
 				TargetAttributes = {
 					B122890E243630A300FACD69 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					B1E5A2D82439FE3300514EB3 = {
 						CreatedOnToolsVersion = 11.4;
 					};
 				};
@@ -253,6 +343,7 @@
 			projectRoot = "";
 			targets = (
 				B122890E243630A300FACD69 /* Pingu */,
+				B1E5A2D82439FE3300514EB3 /* PinguLauncher */,
 			);
 		};
 /* End PBXProject section */
@@ -266,6 +357,15 @@
 				B1228918243630A300FACD69 /* MainMenu.xib in Resources */,
 				B1477DFD2438C0E2005BC84B /* HostMenuItemView.xib in Resources */,
 				B13AF1FA24364BEF0054E1E5 /* PreferencesViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1E5A2D72439FE3300514EB3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1E5A2DE2439FE3400514EB3 /* Assets.xcassets in Resources */,
+				B1E5A2E12439FE3400514EB3 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +390,17 @@
 				B1477DFB2438C0D5005BC84B /* HostMenuItemView.swift in Sources */,
 				B13AF1F824364BDD0054E1E5 /* PreferencesViewController.swift in Sources */,
 				B1477DF72438A935005BC84B /* Rescale.swift in Sources */,
+				B1CD487F243A038000AED012 /* Shared.swift in Sources */,
 				B15C173424379C0000F08119 /* ChartBarView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1E5A2D52439FE3300514EB3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1CD4880243A038000AED012 /* Shared.swift in Sources */,
+				B1E5A2DC2439FE3300514EB3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +411,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				B1228917243630A300FACD69 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		B1E5A2DF2439FE3400514EB3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1E5A2E02439FE3400514EB3 /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -426,7 +544,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Pingu/Supporting Files/Pingu.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = SEWZXLUE96;
@@ -449,7 +567,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Pingu/Supporting Files/Pingu.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = SEWZXLUE96;
@@ -463,6 +581,50 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.attheodo.Pingu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B1E5A2E52439FE3400514EB3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PinguLauncher/PinguLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = SEWZXLUE96;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = PinguLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.attheodo.PinguLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B1E5A2E62439FE3400514EB3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PinguLauncher/PinguLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = SEWZXLUE96;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = PinguLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.attheodo.PinguLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -484,6 +646,15 @@
 			buildConfigurations = (
 				B122891E243630A300FACD69 /* Debug */,
 				B122891F243630A300FACD69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1E5A2E42439FE3400514EB3 /* Build configuration list for PBXNativeTarget "PinguLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1E5A2E52439FE3400514EB3 /* Debug */,
+				B1E5A2E62439FE3400514EB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
