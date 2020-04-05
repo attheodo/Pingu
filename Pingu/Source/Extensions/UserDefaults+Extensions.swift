@@ -18,7 +18,18 @@ extension UserDefaults {
         
         set {
             set(newValue, forKey: #function)
-            self.synchronize()
+        }
+        
+    }
+    
+    var launchAtLogin: Bool {
+        
+        get {
+            return bool(forKey: #function)
+        }
+        
+        set {
+            set(newValue, forKey: #function)
         }
         
     }
