@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 class Pingu {
     
@@ -106,12 +107,19 @@ class Pingu {
                                              keyEquivalent: "")
         preferencesMenuItem.target = self
         
+        let launchAtLogin = NSMenuItem(title: "Launch at login",
+                                             action: #selector(didSelectLaunchAtLogin),
+                                             keyEquivalent: "")
+        launchAtLogin.target = self
+        launchAtLogin.state = UserDefaults.standard.launchAtLogin ? .on : .off
+        
         let quitMenuItem = NSMenuItem(title: "Quit",
                                        action: #selector(didSelectQuitMenuItem),
                                        keyEquivalent: "")
         quitMenuItem.target = self
         
         menu.addItem(preferencesMenuItem)
+        menu.addItem(launchAtLogin)
         menu.addItem(quitMenuItem)
         
         statusItem.menu = menu
@@ -193,6 +201,17 @@ class Pingu {
         guard let selectedHost = savedHosts.selectedHost else { return }
         
         startPinging(host: selectedHost)
+        configureMenu()
+        
+    }
+    
+    @objc fileprivate func didSelectLaunchAtLogin() {
+        
+        UserDefaults.standard.launchAtLogin.toggle()
+        SMLoginItemSetEnabled(pinguLauncherBundleId as CFString, UserDefaults.standard.launchAtLogin)
+        
+        print("Launch at login: \(UserDefaults.standard.launchAtLogin)")
+        
         configureMenu()
         
     }
