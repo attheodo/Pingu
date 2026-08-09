@@ -12,7 +12,6 @@
 		B1228918243630A300FACD69 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1228916243630A300FACD69 /* MainMenu.xib */; };
 		B12289242436343100FACD69 /* Pingu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12289232436343100FACD69 /* Pingu.swift */; };
 		B12289272436377100FACD69 /* PingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12289262436377100FACD69 /* PingService.swift */; };
-		B122892F2436421200FACD69 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B122892E2436421200FACD69 /* EventMonitor.swift */; };
 		B13AF1F824364BDD0054E1E5 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF1F724364BDD0054E1E5 /* PreferencesViewController.swift */; };
 		B13AF1FA24364BEF0054E1E5 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B13AF1F924364BEF0054E1E5 /* PreferencesViewController.xib */; };
 		B13AF1FD24365C350054E1E5 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF1FC24365C350054E1E5 /* UserDefaults+Extensions.swift */; };
@@ -58,7 +57,6 @@
 		B122891A243630A300FACD69 /* Pingu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pingu.entitlements; sourceTree = "<group>"; };
 		B12289232436343100FACD69 /* Pingu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pingu.swift; sourceTree = "<group>"; };
 		B12289262436377100FACD69 /* PingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingService.swift; sourceTree = "<group>"; };
-		B122892E2436421200FACD69 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		B13AF1F724364BDD0054E1E5 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		B13AF1F924364BEF0054E1E5 /* PreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesViewController.xib; sourceTree = "<group>"; };
 		B13AF1FC24365C350054E1E5 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				B1228928243637D200FACD69 /* PingService */,
-				B122892E2436421200FACD69 /* EventMonitor.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -375,7 +372,6 @@
 			files = (
 				B175895B243668ED0050C05E /* PingInterval.swift in Sources */,
 				B12289242436343100FACD69 /* Pingu.swift in Sources */,
-				B122892F2436421200FACD69 /* EventMonitor.swift in Sources */,
 				B15C172D2437639000F08119 /* HostMenuItem.swift in Sources */,
 				B1228913243630A300FACD69 /* AppDelegate.swift in Sources */,
 				B1758962243750940050C05E /* SavedHosts.swift in Sources */,

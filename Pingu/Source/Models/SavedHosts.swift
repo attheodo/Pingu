@@ -54,20 +54,24 @@ class SavedHosts: Codable {
     }
     
     public func add(_ newHost: Host) {
-        
-        if hosts.count >= 5 {
-            hosts = hosts.dropLast()
-        }
-        
+        // Re-adding a host updates its interval and moves it to the front of
+        // the recent-host list instead of creating a duplicate entry.
+        hosts.removeAll { $0.host.caseInsensitiveCompare(newHost.host) == .orderedSame }
+
         hosts.insert(newHost, at: 0)
+        if hosts.count > 5 {
+            hosts.removeLast()
+        }
         setSelected(newHost)
         
     }
     
     public func setSelected(_ selectedHost: Host) {
-        
-        let _ = hosts.map({ $0.selected = false })
-        let _ = hosts.filter({ $0 == selectedHost }).first?.selected = true
+
+        for host in hosts {
+            let isSameHost = host.host.caseInsensitiveCompare(selectedHost.host) == .orderedSame
+            host.selected = host === selectedHost || (isSameHost && host.interval == selectedHost.interval)
+        }
         
     }
     
