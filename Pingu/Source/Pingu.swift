@@ -156,7 +156,7 @@ class Pingu {
                                  interval: host.interval.timeInterval)
         { [weak self] pingResult in
             
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 self?.chartView.addResult(pingResult)
                 self?.statusItem.length = self?.chartView.desiredWidth ?? 0
             }
