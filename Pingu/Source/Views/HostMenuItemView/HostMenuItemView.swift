@@ -29,7 +29,9 @@ class HostMenuItemView: NSView {
         translatesAutoresizingMaskIntoConstraints = false
        
         setupNib()
-        
+        effectView.blendingMode = .withinWindow
+        effectView.isHidden = true
+
         hostLabel.stringValue = host.host
         intervalLabel.stringValue = "Every \(host.interval.title)"
     
@@ -48,6 +50,7 @@ class HostMenuItemView: NSView {
             hostLabel.textColor = NSColor.selectedMenuItemTextColor
             intervalLabel.textColor = NSColor.selectedMenuItemTextColor
             
+            effectView.isHidden = false
             effectView.state = .active
             effectView.material = .selection
             
@@ -56,8 +59,7 @@ class HostMenuItemView: NSView {
             hostLabel.textColor = NSColor.labelColor
             intervalLabel.textColor = NSColor.secondaryLabelColor
             
-            effectView.state = .inactive
-            effectView.material = .windowBackground
+            effectView.isHidden = true
             
         }
         
