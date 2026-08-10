@@ -69,8 +69,7 @@ class SavedHosts: Codable {
     public func setSelected(_ selectedHost: Host) {
 
         for host in hosts {
-            let isSameHost = host.host.caseInsensitiveCompare(selectedHost.host) == .orderedSame
-            host.selected = host === selectedHost || (isSameHost && host.interval == selectedHost.interval)
+            host.selected = host === selectedHost
         }
         
     }
