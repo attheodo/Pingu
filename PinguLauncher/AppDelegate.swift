@@ -33,13 +33,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                                                 name: .killPinguLauncher,
                                                                 object: pinguBundleId)
             
-            var path = Bundle.main.bundlePath as NSString
+            var applicationURL = Bundle.main.bundleURL
             
             for _ in 1...4 {
-                path = path.deletingLastPathComponent as NSString
+                applicationURL.deleteLastPathComponent()
             }
             
-            NSWorkspace.shared.launchApplication(path as String)
+            NSWorkspace.shared.openApplication(at: applicationURL,
+                                                configuration: NSWorkspace.OpenConfiguration()) { _, error in
+                if let error {
+                    NSLog("Failed to launch Pingu: \(error.localizedDescription)")
+                }
+            }
             
         } else {
             self.terminate()
@@ -53,4 +58,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 }
-

@@ -22,6 +22,7 @@ class Pingu: NSObject {
     private var savedHosts: SavedHosts
     private var pingService: PingService
     private var chartView: ChartView
+    private let launchAtLoginService = SMAppService.loginItem(identifier: pinguLauncherBundleId)
     
     // MARK: - Lifecycle
     
@@ -127,7 +128,7 @@ class Pingu: NSObject {
                                              action: #selector(didSelectLaunchAtLogin),
                                              keyEquivalent: "")
         launchAtLogin.target = self
-        launchAtLogin.state = UserDefaults.standard.launchAtLogin ? .on : .off
+        launchAtLogin.state = launchAtLoginService.status == .enabled ? .on : .off
         
         let quitMenuItem = NSMenuItem(title: "Quit",
                                        action: #selector(didSelectQuitMenuItem),
@@ -160,6 +161,10 @@ class Pingu: NSObject {
         guard preferencesPanel == nil else { return }
 
         let controller = PreferencesViewController(pingService: pingService, delegate: self)
+        // Load the view before the panel is ordered. This applies the text
+        // service settings before AppKit can create a remote completion view
+        // while the panel is entering the window hierarchy.
+        _ = controller.view
         let panel = NSPanel(contentViewController: controller)
         panel.title = "Add Host"
         panel.styleMask = [.titled, .closable, .utilityWindow]
@@ -346,14 +351,24 @@ class Pingu: NSObject {
     }
     
     @objc fileprivate func didSelectLaunchAtLogin() {
-        
-        UserDefaults.standard.launchAtLogin.toggle()
-        SMLoginItemSetEnabled(pinguLauncherBundleId as CFString, UserDefaults.standard.launchAtLogin)
-        
-        print("Launch at login: \(UserDefaults.standard.launchAtLogin)")
-        
+
+        do {
+            switch launchAtLoginService.status {
+            case .enabled:
+                try launchAtLoginService.unregister()
+            case .requiresApproval:
+                SMAppService.openSystemSettingsLoginItems()
+            case .notRegistered, .notFound:
+                try launchAtLoginService.register()
+            @unknown default:
+                try launchAtLoginService.register()
+            }
+        } catch {
+            NSLog("Could not update Launch at login: \(error.localizedDescription)")
+        }
+
         configureMenu()
-        
+
     }
     
 }

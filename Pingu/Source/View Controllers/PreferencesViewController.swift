@@ -44,7 +44,11 @@ class PreferencesViewController: NSViewController {
         let submissionID = UUID()
         self.submissionID = submissionID
 
-        DispatchQueue.global(qos: .userInitiated).async {
+        // CFHostStartInfoResolution is synchronous and may wait on the
+        // system's default-QoS networking work. Keep this task below that
+        // priority to avoid a QoS priority inversion while the UI remains
+        // responsive.
+        DispatchQueue.global(qos: .utility).async { [weak self] in
             let (_, error) = pingService.getAddress(forHost: host)
 
             DispatchQueue.main.async { [weak self] in
@@ -63,6 +67,10 @@ class PreferencesViewController: NSViewController {
                                       interval: interval,
                                       errorMessage: "Host resolution timed out")
         }
+    }
+
+    @IBAction func didTapCancelButton(_ sender: AnyObject) {
+        cancelOperation(sender)
     }
 
     // MARK: - Public Properties
@@ -118,12 +126,6 @@ class PreferencesViewController: NSViewController {
         addButton.keyEquivalent = "\r"
         addButton.keyEquivalentModifierMask = []
         addButton.isEnabled = false
-    }
-
-    override func viewDidAppear() {
-        super.viewDidAppear()
-
-        activateHostInput()
     }
 
     override func cancelOperation(_ sender: Any?) {
@@ -189,14 +191,21 @@ class PreferencesViewController: NSViewController {
     func activateHostInput() {
         guard let window = view.window else { return }
 
-        window.makeKey()
-        window.makeFirstResponder(hostTextField)
-        if let editor = hostTextField.currentEditor() as? NSTextView {
-            editor.isAutomaticTextCompletionEnabled = false
-            editor.isAutomaticSpellingCorrectionEnabled = false
-            editor.isAutomaticTextReplacementEnabled = false
+        // Wait until the panel's initial layout pass has finished before
+        // changing its first responder. This avoids re-entering AppKit
+        // layout while the panel is being presented.
+        DispatchQueue.main.async { [weak self, weak window] in
+            guard let self, let window, window.isVisible else { return }
+
+            window.makeKey()
+            window.makeFirstResponder(self.hostTextField)
+            if let editor = self.hostTextField.currentEditor() as? NSTextView {
+                editor.isAutomaticTextCompletionEnabled = false
+                editor.isAutomaticSpellingCorrectionEnabled = false
+                editor.isAutomaticTextReplacementEnabled = false
+            }
+            self.updateSubmitAvailability()
         }
-        updateSubmitAvailability()
     }
 
     // MARK: - Selectors

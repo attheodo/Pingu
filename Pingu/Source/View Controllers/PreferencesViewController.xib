@@ -63,16 +63,31 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LHc-lu-aEe">
-                            <rect key="frame" x="-6" y="-7" width="171" height="32"/>
-                            <buttonCell key="cell" type="push" title="Add and start pinging" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zFx-eK-UKd">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="didTapDoneButton:" target="-2" id="NEQ-FC-dFg"/>
-                            </connections>
-                        </button>
+                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="x6J-bm-cancel-row">
+                            <rect key="frame" x="0.0" y="-7" width="159" height="32"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cancel-button">
+                                    <rect key="frame" x="0.0" y="0.0" width="67" height="32"/>
+                                    <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cancel-cell">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="didTapCancelButton:" target="-2" id="cancel-action"/>
+                                    </connections>
+                                </button>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LHc-lu-aEe">
+                                    <rect key="frame" x="75" y="0.0" width="84" height="32"/>
+                                    <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zFx-eK-UKd">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="didTapDoneButton:" target="-2" id="NEQ-FC-dFg"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <visibilityPriorities>
                         <integer value="1000"/>
