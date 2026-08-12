@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		B1228918243630A300FACD69 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1228916243630A300FACD69 /* MainMenu.xib */; };
 		B12289242436343100FACD69 /* Pingu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12289232436343100FACD69 /* Pingu.swift */; };
 		B12289272436377100FACD69 /* PingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12289262436377100FACD69 /* PingService.swift */; };
-		B122892F2436421200FACD69 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B122892E2436421200FACD69 /* EventMonitor.swift */; };
 		B13AF1F824364BDD0054E1E5 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF1F724364BDD0054E1E5 /* PreferencesViewController.swift */; };
 		B13AF1FA24364BEF0054E1E5 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B13AF1F924364BEF0054E1E5 /* PreferencesViewController.xib */; };
 		B13AF1FD24365C350054E1E5 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13AF1FC24365C350054E1E5 /* UserDefaults+Extensions.swift */; };
@@ -23,7 +22,6 @@
 		B15C172D2437639000F08119 /* HostMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C172C2437639000F08119 /* HostMenuItem.swift */; };
 		B15C172F24377B2000F08119 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C172E24377B2000F08119 /* ChartView.swift */; };
 		B15C1732243784AF00F08119 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B15C1731243784AF00F08119 /* SnapKit */; };
-		B15C173424379C0000F08119 /* ChartBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C173324379C0000F08119 /* ChartBarView.swift */; };
 		B175895B243668ED0050C05E /* PingInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B175895A243668ED0050C05E /* PingInterval.swift */; };
 		B175896024374BA30050C05E /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = B175895F24374BA30050C05E /* Host.swift */; };
 		B1758962243750940050C05E /* SavedHosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1758961243750940050C05E /* SavedHosts.swift */; };
@@ -59,7 +57,6 @@
 		B122891A243630A300FACD69 /* Pingu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pingu.entitlements; sourceTree = "<group>"; };
 		B12289232436343100FACD69 /* Pingu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pingu.swift; sourceTree = "<group>"; };
 		B12289262436377100FACD69 /* PingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingService.swift; sourceTree = "<group>"; };
-		B122892E2436421200FACD69 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		B13AF1F724364BDD0054E1E5 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		B13AF1F924364BEF0054E1E5 /* PreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesViewController.xib; sourceTree = "<group>"; };
 		B13AF1FC24365C350054E1E5 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
@@ -69,7 +66,6 @@
 		B1477DFE2438DE93005BC84B /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		B15C172C2437639000F08119 /* HostMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostMenuItem.swift; sourceTree = "<group>"; };
 		B15C172E24377B2000F08119 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
-		B15C173324379C0000F08119 /* ChartBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBarView.swift; sourceTree = "<group>"; };
 		B175895A243668ED0050C05E /* PingInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingInterval.swift; sourceTree = "<group>"; };
 		B175895F24374BA30050C05E /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		B1758961243750940050C05E /* SavedHosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedHosts.swift; sourceTree = "<group>"; };
@@ -170,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				B1228928243637D200FACD69 /* PingService */,
-				B122892E2436421200FACD69 /* EventMonitor.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -206,7 +201,6 @@
 			children = (
 				B1477DF92438C0C7005BC84B /* HostMenuItemView */,
 				B15C172E24377B2000F08119 /* ChartView.swift */,
-				B15C173324379C0000F08119 /* ChartBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,8 +308,9 @@
 		B1228907243630A300FACD69 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 2700;
 				ORGANIZATIONNAME = "Thanos Theodoridis";
 				TargetAttributes = {
 					B122890E243630A300FACD69 = {
@@ -378,7 +373,6 @@
 			files = (
 				B175895B243668ED0050C05E /* PingInterval.swift in Sources */,
 				B12289242436343100FACD69 /* Pingu.swift in Sources */,
-				B122892F2436421200FACD69 /* EventMonitor.swift in Sources */,
 				B15C172D2437639000F08119 /* HostMenuItem.swift in Sources */,
 				B1228913243630A300FACD69 /* AppDelegate.swift in Sources */,
 				B1758962243750940050C05E /* SavedHosts.swift in Sources */,
@@ -391,7 +385,6 @@
 				B13AF1F824364BDD0054E1E5 /* PreferencesViewController.swift in Sources */,
 				B1477DF72438A935005BC84B /* Rescale.swift in Sources */,
 				B1CD487F243A038000AED012 /* Shared.swift in Sources */,
-				B15C173424379C0000F08119 /* ChartBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +445,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -459,9 +453,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 68EN624LSJ;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -476,11 +473,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -512,6 +510,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -519,9 +518,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 68EN624LSJ;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -530,10 +532,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -547,14 +550,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = SEWZXLUE96;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Pingu/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.attheodo.Pingu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -570,14 +573,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = SEWZXLUE96;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Pingu/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.attheodo.Pingu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -593,13 +596,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = SEWZXLUE96;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PinguLauncher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.attheodo.PinguLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -615,13 +619,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = SEWZXLUE96;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PinguLauncher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.attheodo.PinguLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

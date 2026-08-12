@@ -6,186 +6,153 @@
 //  Copyright © 2020 Thanos Theodoridis. All rights reserved.
 //
 
-import Foundation
 import Cocoa
 
-import SnapKit
+class ChartView {
 
-class ChartView: NSView {
-    
-    // MAKR: - Public Properties
-    
+    // MARK: - Public Properties
+
     public var desiredWidth: CGFloat {
-        return baseLineViewWidth + baseLineViewMargin + label.frame.width
+        let titleWidth = (title as NSString).size(withAttributes: [.font: titleFont]).width
+        return chartImageSize.width + titleSpacing + ceil(titleWidth)
     }
-    
+
     // MARK: - Private Properties
-    
-    fileprivate var label: NSTextField
-    fileprivate var baselineView: NSView
-    fileprivate var chartBarViews: [ChartBarView] = []
-    fileprivate var results: [PingResult] = Array(repeating: .responseInMilliseconds(0), count: 6)
-    fileprivate let baseLineViewMargin: CGFloat = 6
-    fileprivate let baseLineViewWidth: CGFloat = 22
-    fileprivate var avgResponseTime: Float {
-        
-        var values: [Int] = []
-        
-        results.forEach { r in
-            if case .responseInMilliseconds(let v) = r {
-                values.append(v)
+
+    private weak var statusBarButton: NSStatusBarButton?
+    private var title = "n/a"
+    private var isReset = false
+    private var results: [PingResult] = Array(repeating: .responseInMilliseconds(0), count: 6)
+
+    private let titleSpacing: CGFloat = 4
+    private let titleFont = NSFont.menuBarFont(ofSize: 0)
+    private let chartImageSize = NSSize(width: 26, height: 16)
+    private let barWidth: CGFloat = 2
+    private let barSpacing: CGFloat = 2
+    private let barBottom: CGFloat = 4
+    private let maxBarHeight: CGFloat = 12
+    // Template images cannot retain hue, so preserve the three latency
+    // categories as distinct monochrome intensities instead.
+    private let normalBarOpacity: CGFloat = 1.0
+    private let highPingBarOpacity: CGFloat = 0.55
+    private let veryHighPingBarOpacity: CGFloat = 0.4
+
+    private var avgResponseTime: Float {
+        let values = results.compactMap { result -> Int? in
+            if case .responseInMilliseconds(let value) = result {
+                return value
             }
+            return nil
         }
-        
+
         return values.isEmpty ? 0 : Float(values.reduce(0, +) / values.count)
-        
     }
-    
-    // MARK: - Lifecycle
-    
-    init() {
-        
-        label = NSTextField()
-        baselineView = NSView()
-        
-        super.init(frame: NSRect(x: 0, y: 0, width: 60, height: 22))
-        
-        configureViews()
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Overrides
-    
-    override func updateLayer() {
-        
-        super.updateLayer()
-        baselineView.layer?.backgroundColor = NSColor.secondaryLabelColor.cgColor
-        
-    }
-    
+
     // MARK: - Public Methods
-    
+
+    public func attach(to statusBarButton: NSStatusBarButton) {
+        self.statusBarButton = statusBarButton
+
+        statusBarButton.isBordered = false
+        statusBarButton.imagePosition = .imageLeft
+        statusBarButton.imageScaling = .scaleNone
+        statusBarButton.imageHugsTitle = true
+        statusBarButton.font = titleFont
+
+        updateStatusBarButton()
+    }
+
     public func addResult(_ pingResult: PingResult) {
-        
         results.append(pingResult)
-        
+
         if results.count > 6 {
             results = Array(results.dropFirst())
         }
-        
-        updateLabel(forPingResult: pingResult)
-        updateBarViews()
-        
+
+        isReset = false
+
+        switch pingResult {
+        case .responseInMilliseconds(let value):
+            title = "\(value)ms"
+        case .timeout:
+            title = "t/o"
+        default:
+            title = "n/a"
+        }
+
+        updateStatusBarButton()
     }
-    
+
     public func setPausedState(_ paused: Bool) {
-        
         if paused {
             reset()
         }
-        
     }
-    
+
     public func reset() {
-        
-        label.stringValue = "n/a"
+        title = "n/a"
+        isReset = true
         results = Array(repeating: .responseInMilliseconds(0), count: 6)
-        resetBarViews()
-        
+        updateStatusBarButton()
     }
-    
+
     // MARK: - Private Methods
-    
-    fileprivate func configureViews() {
-        
-        label.isBezeled = false
-        label.isBordered = false
-        label.isSelectable = false
-        label.isEditable = false
-        label.backgroundColor = .clear
-    
-        addSubview(label)
-        
-        baselineView.wantsLayer = true
-        
-        addSubview(baselineView)
-        
-        baselineView.snp.makeConstraints { m in
-            m.height.equalTo(1)
-            m.width.equalTo(baseLineViewWidth)
-            m.bottom.equalTo(self).offset(-4)
-            m.left.equalTo(self)
-        }
-        
-        label.snp.makeConstraints { m in
-            m.height.equalTo(16)
-            m.centerY.equalTo(self).offset(1.5)
-            m.left.equalTo(baselineView.snp.right).offset(baseLineViewMargin)
-        }
-        
-        for i in 0..<6 {
-            
-            let v = ChartBarView()
-            addSubview(v)
-            
-            if i == 0 {
-               
-                v.snp.makeConstraints { m in
-                    m.left.equalTo(baselineView)
-                    m.bottom.equalTo(baselineView).offset(-2)
-                    m.width.equalTo(2)
-                    m.height.equalTo(1)
-                }
-                
-            } else {
-                
-                v.snp.makeConstraints { m in
-                    m.left.equalTo(chartBarViews[i-1].snp.right).offset(2)
-                    m.bottom.equalTo(chartBarViews[i-1])
-                    m.width.equalTo(2)
-                    m.height.equalTo(1)
-                }
-                
+
+    private func updateStatusBarButton() {
+        guard let statusBarButton else { return }
+
+        statusBarButton.title = title
+        statusBarButton.image = makeTemplateChartImage()
+    }
+
+    private func makeTemplateChartImage() -> NSImage {
+        let image = NSImage(size: chartImageSize)
+        image.lockFocus()
+
+        if !isReset {
+            for (index, result) in results.enumerated() {
+                let height = barHeight(for: result)
+                guard height > 0 else { continue }
+
+                NSColor.black.withAlphaComponent(barOpacity(for: result)).setFill()
+
+                let x = CGFloat(index) * (barWidth + barSpacing)
+                NSRect(x: x,
+                       y: barBottom,
+                       width: barWidth,
+                       height: height).fill()
             }
-            
-            chartBarViews.append(v)
-            
         }
-        
+
+        image.unlockFocus()
+        image.isTemplate = true
+        return image
     }
-    
-    fileprivate func updateLabel(forPingResult pingResult: PingResult) {
-        
-        switch pingResult {
-            
-        case .responseInMilliseconds(let v):
-            label.stringValue = "\(v)ms"
-            
-        case .timeout:
-            label.stringValue = "t/o"
-            
+
+    private func barOpacity(for result: PingResult) -> CGFloat {
+        guard case .responseInMilliseconds(let value) = result else { return 0 }
+
+        switch value {
+        case 0..<80:
+            return normalBarOpacity
+        case 80..<150:
+            return highPingBarOpacity
         default:
-            label.stringValue = "n/a"
+            return veryHighPingBarOpacity
         }
-        
-        label.sizeToFit()
-        
     }
-    
-    fileprivate func updateBarViews() {
-        
-        for (i, result) in results.enumerated() {
-            chartBarViews[i].configure(with: result, avgResponseTime: avgResponseTime)
+
+    private func barHeight(for result: PingResult) -> CGFloat {
+        switch result {
+        case .responseInMilliseconds(let value):
+            let scaledValue = Rescale(from: (0, Float(avgResponseTime * 2)),
+                                      to: (1, Float(maxBarHeight))).rescale(Float(value))
+            return min(CGFloat(scaledValue), maxBarHeight)
+        case .timeout:
+            return 0
+        default:
+            return 0
         }
-        
     }
-    
-    fileprivate func resetBarViews() {
-        let _ = chartBarViews.map({ $0.reset() })
-    }
-    
+
 }

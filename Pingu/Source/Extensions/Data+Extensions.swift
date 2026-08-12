@@ -11,18 +11,14 @@ import Foundation
 extension Data {
     
     public var socketAddress: sockaddr {
-        return self.withUnsafeBytes { (pointer: UnsafePointer<UInt8>) -> sockaddr in
-            let raw = UnsafeRawPointer(pointer)
-            let address = raw.assumingMemoryBound(to: sockaddr.self).pointee
-            return address
+        return self.withUnsafeBytes { buffer in
+            buffer.load(as: sockaddr.self)
         }
     }
     
     public var socketAddressInternet: sockaddr_in {
-        return self.withUnsafeBytes { (pointer: UnsafePointer<UInt8>) -> sockaddr_in in
-            let raw = UnsafeRawPointer(pointer)
-            let address = raw.assumingMemoryBound(to: sockaddr_in.self).pointee
-            return address
+        return self.withUnsafeBytes { buffer in
+            buffer.load(as: sockaddr_in.self)
         }
     }
     
